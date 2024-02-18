@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Edit Feed{% endblock %}
+
+{% block content %}
+
+    <div class="bg-indigo-800 text-white pt-12 pb-24 p-6">
+        <div class="container mx-auto">
+            <div>
+                <h3 class="text-3xl font-serif text-indigo-100">Edit Feed</h3>
+                <a class="px-3 py-2 text-indigo-700 bg-indigo-200 rounded my-1 inline-block" href="{{ path('feed_data', { 'id': feed.id }) }}">View Feed Data</a>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto py-5">
+        <form action="{{ path('edit_feed', { 'id': feed.id }) }}" method="post" class="p-5 rounded shadow-md -mt-12 bg-white">
+            {{ form_start(form) }}
+
+            <div class="mb-4">
+                {{ form_label(form.url, 'URL', {'class': 'block text-gray-700 font-bold mb-2'}) }}
+                {{ form_widget(form.url, {'class': 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight'}) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(form.name, 'Name', {'class': 'block text-gray-700 font-bold mb-2'}) }}
+                {{ form_widget(form.name, {'class': 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight '}) }}
+            </div>
+
+            <div class="mb-6">
+                {{ form_label(form.description, 'Description', {'class': 'block text-gray-700 font-bold mb-2'}) }}
+                {{ form_widget(form.description, {'class': 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight '}) }}
+            </div>
+
+            <div class="flex items-center">
+                <button type="submit" class="bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-1 px-3 rounded focus:outline-none focus:shadow-outline">Save</button>
+                <a class="px-3 py-1 bg-gray-200 text-gray-800 rounded ml-2  " href="{{ path('feeds') }}">Cancel, Go Back</a>
+            </div>
+
+            {{ form_end(form) }}
+        </form>
+    </div>
+{% endblock %}

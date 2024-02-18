@@ -1,0 +1,38 @@
+{# templates/feeds/new.html.twig #}
+
+{% extends 'layout.html.twig' %}
+
+{% block title %}Add New Feed{% endblock %}
+
+{% block content %}
+    <div class="bg-indigo-800 text-white pt-12 pb-24 p-6">
+        <div class="container mx-auto">
+            <div>
+                <h3 class="text-3xl font-serif text-indigo-100">Add a new feed</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto">
+        <div class="p-5 rounded bg-white -mt-12 shadow-md">
+            {{ form_start(form) }}
+            <div class="mb-4">
+                {{ form_label(form.url, 'URL', {'class': 'block text-gray-700 font-bold mb-2'}) }}
+                {{ form_widget(form.url, {'class': 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none'}) }}
+            </div>
+            <div class="mb-4">
+                {{ form_label(form.name, 'Name', {'class': 'block text-gray-700 font-bold mb-2'}) }}
+                {{ form_widget(form.name, {'class': 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none'}) }}
+            </div>
+            <div class="mb-6">
+                {{ form_label(form.description, 'Description', {'class': 'block text-gray-700 font-bold mb-2'}) }}
+                {{ form_widget(form.description, {'class': 'appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none '}) }}
+            </div>
+            <div class="flex items-center">
+                <button type="submit" class="bg-indigo-700 hover:bg-indigo-800 text-white font-semibold px-3 py-1 rounded">Add Feed</button>
+                <a class="px-3 py-1 bg-gray-200 text-gray-800 rounded ml-2  " href="{{ path('feeds') }}">Cancel, Go Back</a>
+
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

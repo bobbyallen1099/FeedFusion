@@ -1,0 +1,21 @@
+{% macro renderPagination(pagination) %}
+    <div class="flex justify-center items-center mt-6">
+        {% if pagination.getTotalItemCount() > pagination.getItemNumberPerPage() %}
+            {% if pagination.getCurrentPageNumber() > 1 %}
+                <a href="{{ path(app.request.attributes.get('_route'), {'page': pagination.getCurrentPageNumber() - 1}) }}" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 mr-2">Previous</a>
+            {% endif %}
+
+            {% for page in 1..pagination.getPageCount() %}
+                {% if page == pagination.getCurrentPageNumber() %}
+                    <span class="px-4 py-2 bg-indigo-700 text-white rounded-md mr-2">{{ page }}</span>
+                {% else %}
+                    <a href="{{ path(app.request.attributes.get('_route'), {'page': page}) }}" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 mr-2">{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if pagination.getCurrentPageNumber() < pagination.getPageCount() %}
+                <a href="{{ path(app.request.attributes.get('_route'), {'page': pagination.getCurrentPageNumber() + 1}) }}" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 ml-2">Next</a>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endmacro %}

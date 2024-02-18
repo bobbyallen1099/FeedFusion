@@ -1,0 +1,14 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Feed Fusion{% endblock %}</title>
+    <link href="{{ asset('build/css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html.twig' %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

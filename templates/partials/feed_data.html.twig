@@ -1,0 +1,22 @@
+{% for itemKey, itemValue in data %}
+    {% if itemValue is iterable %}
+        <ul class="list-disc ml-4 my-2">
+            {% include 'partials/feed_data.html.twig' with {'data': itemValue} %}
+        </ul>
+    {% else %}
+        <li>
+            <strong>{{ itemKey|title }}</strong>:
+            {% if  itemValue starts with 'http' or 'www.' in itemValue and itemKey != 'description' %}
+                <a class="underline text-indigo-700" href="{{ itemValue }}" target="_blank">
+                    {% if itemKey == 'image' or parentKey == 'image' or 'img' in itemValue %}
+                        <img src="{{ itemValue }}" alt="Image"/>
+                    {% else %}
+                        {{ itemValue }}
+                    {% endif %}
+                </a>
+            {% else %}
+                {{ itemValue }}
+            {% endif %}
+        </li>
+    {% endif %}
+{% endfor %}

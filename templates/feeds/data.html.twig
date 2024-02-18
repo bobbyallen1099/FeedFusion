@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="container mx-auto mt-10">
+        <h1 class="text-2xl font-bold mb-4">View Feed Data</h1>
+        <div class="bg-white shadow-md border rounded-lg p-4">
+            {% for key, value in feedData %}
+                <h2 class="text-lg font-semibold">{{ key|title }}</h2>
+                {% if value is iterable %}
+                    <ul class="list-disc ml-4">
+                        {% include 'partials/feed_data.html.twig' with {'data': value, 'limit': 5, parentKey: key} %}
+                    </ul>
+                {% else %}
+                    <p>{{ value }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

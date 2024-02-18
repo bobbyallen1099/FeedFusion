@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "scripts": {
+    "tailwind": "tailwindcss build -i assets/css/styles.css -o public/build/css/styles.css"
+  }
+}
