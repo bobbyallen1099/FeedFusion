@@ -16,7 +16,7 @@ Navigate to the project root & we'll set-up the docker containers. Make sure Doc
 As Symfony is running in Docker, use `docker compose exec php php bin/console` before Symfony console commands to execute them within the Docker container.
 
 1. Run `composer install && npm install && npm run tailwind` to se-tup extensions & npm for styles.
-2. Run `symfony console doctrine:migrations:migrate` to migrate the tables into docker PostgresQL DB
+2. Run `docker compose exec php php bin/console doctrine:migrations:migrate` to migrate the tables into docker PostgresQL DB
 3. Run `docker compose exec php php bin/console app:seed-feeds` to seed some example RSS feeds.
 
 # Showcase!
